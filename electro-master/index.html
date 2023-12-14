@@ -265,6 +265,43 @@
 				</div>
 				<!-- /section title -->
 
+				<div class="card">
+					<h4>Price Range Slider</h4>
+			  
+					<div class="price-content">
+					  <div>
+						<label>Min</label>
+						<p id="min-value">$50</p>
+					  </div>
+			  
+					  <div>
+						<label>Max</label>
+						<p id="max-value">$500</p>
+					  </div>
+					</div>
+			  
+					<div class="range-slider price-slider">
+					  <div class="range-fill"></div>
+			  
+					  <input
+						type="range"
+						class="price-min"
+						value="100"
+						min="10"
+						max="500"
+						step="10"
+					  />
+					  <input
+						type="range"
+						class="price-max"
+						value="250"
+						min="10"
+						max="500"
+						step="10"
+					  />
+					</div>
+				  </div>
+
 				<!-- Products tab & slick -->
 				<div class="col-md-12">
 					<div class="row">
@@ -294,7 +331,7 @@
 												<i class="fa fa-star"></i>
 											</div>
 											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												<button class="add-to-wishlist" onclick="addToWishlist(p_id)"><i class="fa fa-heart-o"></i><span
 														class="tooltipp">add to wishlist</span></button>
 												<button class="add-to-compare"><i class="fa fa-exchange"></i><span
 														class="tooltipp">add to compare</span></button>
@@ -330,7 +367,7 @@
 												<i class="fa fa-star-o"></i>
 											</div>
 											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												<button class="add-to-wishlist" onclick="addToWishlist(p_id)"><i class="fa fa-heart-o"></i><span
 														class="tooltipp">add to wishlist</span></button>
 												<button class="add-to-compare"><i class="fa fa-exchange"></i><span
 														class="tooltipp">add to compare</span></button>
@@ -361,7 +398,7 @@
 											<div class="product-rating">
 											</div>
 											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												<button class="add-to-wishlist" onclick="addToWishlist(p_id)"><i class="fa fa-heart-o"></i><span
 														class="tooltipp">add to wishlist</span></button>
 												<button class="add-to-compare"><i class="fa fa-exchange"></i><span
 														class="tooltipp">add to compare</span></button>
@@ -394,7 +431,7 @@
 												<i class="fa fa-star"></i>
 											</div>
 											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												<button class="add-to-wishlist" onclick="addToWishlist(p_id)"><i class="fa fa-heart-o"></i><span
 														class="tooltipp">add to wishlist</span></button>
 												<button class="add-to-compare"><i class="fa fa-exchange"></i><span
 														class="tooltipp">add to compare</span></button>
@@ -427,7 +464,7 @@
 												<i class="fa fa-star"></i>
 											</div>
 											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												<button class="add-to-wishlist" onclick="addToWishlist(p_id)"><i class="fa fa-heart-o"></i><span
 														class="tooltipp">add to wishlist</span></button>
 												<button class="add-to-compare"><i class="fa fa-exchange"></i><span
 														class="tooltipp">add to compare</span></button>
@@ -554,7 +591,7 @@
 												<i class="fa fa-star"></i>
 											</div>
 											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												<button class="add-to-wishlist" onclick="addToWishlist(p_id)"><i class="fa fa-heart-o"></i><span
 														class="tooltipp">add to wishlist</span></button>
 												<button class="add-to-compare"><i class="fa fa-exchange"></i><span
 														class="tooltipp">add to compare</span></button>
@@ -590,7 +627,7 @@
 												<i class="fa fa-star-o"></i>
 											</div>
 											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												<button class="add-to-wishlist" onclick="addToWishlist(p_id)"><i class="fa fa-heart-o"></i><span
 														class="tooltipp">add to wishlist</span></button>
 												<button class="add-to-compare"><i class="fa fa-exchange"></i><span
 														class="tooltipp">add to compare</span></button>
@@ -621,7 +658,7 @@
 											<div class="product-rating">
 											</div>
 											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												<button class="add-to-wishlist" onclick="addToWishlist(p_id)"><i class="fa fa-heart-o"></i><span
 														class="tooltipp">add to wishlist</span></button>
 												<button class="add-to-compare"><i class="fa fa-exchange"></i><span
 														class="tooltipp">add to compare</span></button>
@@ -654,7 +691,7 @@
 												<i class="fa fa-star"></i>
 											</div>
 											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												<button class="add-to-wishlist" onclick="addToWishlist(p_id)"><i class="fa fa-heart-o"></i><span
 														class="tooltipp">add to wishlist</span></button>
 												<button class="add-to-compare"><i class="fa fa-exchange"></i><span
 														class="tooltipp">add to compare</span></button>
@@ -687,7 +724,7 @@
 												<i class="fa fa-star"></i>
 											</div>
 											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												<button class="add-to-wishlist" onclick="addToWishlist(p_id)"><i class="fa fa-heart-o"></i><span
 														class="tooltipp">add to wishlist</span></button>
 												<button class="add-to-compare"><i class="fa fa-exchange"></i><span
 														class="tooltipp">add to compare</span></button>

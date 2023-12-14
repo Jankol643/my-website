@@ -1,7 +1,16 @@
 (function($) {
-	"use strict"
+	"use strict";
+	console.log("main js called");
+	function init() {
+		initUI();
+		initPriceSlider();
+		initPriceFilter();
+	}
 
-	// Mobile Nav toggle
+	init();
+
+	function initUI() {
+			// Mobile Nav toggle
 	$('.menu-toggle > a').on('click', function (e) {
 		e.preventDefault();
 		$('#responsive-nav').toggleClass('active');
@@ -16,7 +25,7 @@
 
 	// Products Slick
 	$('.products-slick').each(function() {
-		var $this = $(this),
+		let $this = $(this),
 				$nav = $this.attr('data-nav');
 
 		$this.slick({
@@ -48,7 +57,7 @@
 
 	// Products Widget Slick
 	$('.products-widget-slick').each(function() {
-		var $this = $(this),
+		let $this = $(this),
 				$nav = $this.attr('data-nav');
 
 		$this.slick({
@@ -95,22 +104,27 @@
   });
 
 	// Product img zoom
-	var zoomMainProduct = document.getElementById('product-main-img');
+	let zoomMainProduct = document.getElementById('product-main-img');
 	if (zoomMainProduct) {
 		$('#product-main-img .product-preview').zoom();
 	}
 
+	}
+
+
 	/////////////////////////////////////////
+
+	function initPriceSlider() {
 
 	// Input number
 	$('.input-number').each(function() {
-		var $this = $(this),
+		let $this = $(this),
 		$input = $this.find('input[type="number"]'),
 		up = $this.find('.qty-up'),
 		down = $this.find('.qty-down');
 
 		down.on('click', function () {
-			var value = parseInt($input.val()) - 1;
+			let value = parseInt($input.val()) - 1;
 			value = value < 1 ? 1 : value;
 			$input.val(value);
 			$input.change();
@@ -118,51 +132,99 @@
 		})
 
 		up.on('click', function () {
-			var value = parseInt($input.val()) + 1;
+			let value = parseInt($input.val()) + 1;
 			$input.val(value);
 			$input.change();
 			updatePriceSlider($this , value)
 		})
 	});
 
-	var priceInputMax = document.getElementById('price-max'),
-			priceInputMin = document.getElementById('price-min');
+		let priceInputMax = document.getElementsByClassName('price-max')[0],
+		priceInputMin = document.getElementsByClassName('price-min')[0];
 
-	priceInputMax.addEventListener('change', function(){
-		updatePriceSlider($(this).parent() , this.value)
-	});
+priceInputMax.addEventListener('change', function(){
+	updatePriceSlider($(this).parent() , this.value)
+});
 
-	priceInputMin.addEventListener('change', function(){
-		updatePriceSlider($(this).parent() , this.value)
-	});
+priceInputMin.addEventListener('change', function(){
+	updatePriceSlider($(this).parent() , this.value)
+});
 
-	function updatePriceSlider(elem , value) {
-		if ( elem.hasClass('price-min') ) {
-			console.log('min')
-			priceSlider.noUiSlider.set([value, null]);
-		} else if ( elem.hasClass('price-max')) {
-			console.log('max')
-			priceSlider.noUiSlider.set([null, value]);
+function updatePriceSlider(elem , value) {
+	if ( elem.hasClass('price-min') ) {
+		console.log('min')
+		priceSlider.noUiSlider.set([value, null]);
+	} else if ( elem.hasClass('price-max')) {
+		console.log('max')
+		priceSlider.noUiSlider.set([null, value]);
+	}
+}
+
+// Price Slider
+let priceSlider = document.getElementsByClassName('price-slider');
+if (!priceSlider) {
+	noUiSlider.create(priceSlider, {
+		start: [1, 999],
+		connect: true,
+		step: 1,
+		range: {
+			'min': 1,
+			'max': 999
 		}
+	});
+
+	priceSlider.noUiSlider.on('update', function( values, handle ) {
+		let value = values[handle];
+		handle ? priceInputMax.value = value : priceInputMin.value = value
+	});
+}
+
 	}
 
-	// Price Slider
-	var priceSlider = document.getElementById('price-slider');
-	if (priceSlider) {
-		noUiSlider.create(priceSlider, {
-			start: [1, 999],
-			connect: true,
-			step: 1,
-			range: {
-				'min': 1,
-				'max': 999
-			}
-		});
+	function initPriceFilter() {
+		let minValue = document.getElementById("min-value");
+let maxValue = document.getElementById("max-value");
 
-		priceSlider.noUiSlider.on('update', function( values, handle ) {
-			var value = values[handle];
-			handle ? priceInputMax.value = value : priceInputMin.value = value
-		});
+const rangeFill = document.querySelector(".range-fill");
+
+// Function to validate range and update the fill color on slider
+function validateRange() {
+  let minPrice = parseInt(inputElements[0].value);
+  let maxPrice = parseInt(inputElements[1].value);
+
+  if (minPrice > maxPrice) {
+    let tempValue = maxPrice;
+    maxPrice = minPrice;
+    minPrice = tempValue;
+  }
+
+  const minPercentage = ((minPrice - 10) / 490) * 100;
+  const maxPercentage = ((maxPrice - 10) / 490) * 100;
+
+  rangeFill.style.left = minPercentage + "%";
+  rangeFill.style.width = maxPercentage - minPercentage + "%";
+
+  minValue.innerHTML = "$" + minPrice;
+  maxValue.innerHTML = "$" + maxPrice;
+}
+
+const inputElements = document.querySelectorAll("input");
+
+// Add an event listener to each input element
+inputElements.forEach((element) => {
+  element.addEventListener("input", validateRange);
+});
+
+// Initial call to validateRange
+validateRange();
 	}
+
+		//update cart
+		function addToWishlist(p_id) {
+			alert("Item added to wishlist");
+			//TODO: multiple wishlists
+			//TODO: multiple items at once
+		}
+	
 
 })(jQuery);
