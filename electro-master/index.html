@@ -265,40 +265,51 @@
 				</div>
 				<!-- /section title -->
 
-				<div class="card">
-					<h4>Price Range Slider</h4>
-			  
-					<div class="price-content">
-					  <div>
-						<label>Min</label>
-						<p id="min-value">$50</p>
-					  </div>
-			  
-					  <div>
-						<label>Max</label>
-						<p id="max-value">$500</p>
-					  </div>
+				  <div class="filter-container">
+					<h2>Filters</h2>
+					<div class="filter-group">
+					  <h3>Color</h3>
+					  <label><input type="checkbox" name="color" value="red"> Red</label>
+					  <label><input type="checkbox" name="color" value="blue"> Blue</label>
+					  <label><input type="checkbox" name="color" value="green"> Green</label>
 					</div>
-			  
-					<div class="range-slider price-slider">
-					  <div class="range-fill"></div>
-			  
-					  <input
-						type="range"
-						class="price-min"
-						value="100"
-						min="10"
-						max="500"
-						step="10"
-					  />
-					  <input
-						type="range"
-						class="price-max"
-						value="250"
-						min="10"
-						max="500"
-						step="10"
-					  />
+					<div class="filter-group">
+					  <h3>Size</h3>
+					  <label><input type="checkbox" name="size" value="small"> Small</label>
+					  <label><input type="checkbox" name="size" value="medium"> Medium</label>
+					  <label><input type="checkbox" name="size" value="large"> Large</label>
+					</div>
+					<div class="filter-group">
+					  <h3>Price</h3>
+					  <div class="price-slider-container">
+						<div class="price-slider">
+						  <input type="range" id="price-range" min="1" max="100" value="1">
+						  <div class="slider-track"></div>
+						  <div class="slider-handle"></div>
+						</div>
+						<div class="price-labels">
+						  <span>$1</span>
+						  <span>$100</span>
+						</div>
+						<div class="price-input-container">
+							<label for="price-from">from </label>
+							<input type="number" id="price-from" min="0" step="0.01" placeholder="10">
+							<label for="price-to">to </label>
+							<input type="number" id="price-to" min="0" step="0.01" placeholder="100">
+							<select id="currency">
+							  <option value="USD">USD</option>
+							  <option value="EUR">EUR</option>
+							  <option value="JPY">JPY</option>
+							  <option value="GBP">GBP</option>
+							  <option value="CNY">CNY</option>
+							</select>
+						  </div>
+						<label for="show-chart">
+						  <input type="checkbox" id="show-chart">
+						  Show Price Distribution Chart
+						</label>
+						<div class="price-chart" id="price-chart"></div>
+					  </div>
 					</div>
 				  </div>
 

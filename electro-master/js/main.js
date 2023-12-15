@@ -177,6 +177,49 @@ if (!priceSlider) {
 		let value = values[handle];
 		handle ? priceInputMax.value = value : priceInputMin.value = value
 	});
+
+	const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', () => {
+    const filters = getSelectedFilters();
+    // Perform filtering logic based on selected filters
+    console.log(filters);
+  });
+});
+
+function getSelectedFilters() {
+  const selectedFilters = {};
+  checkboxes.forEach(checkbox => {
+    if (checkbox.checked) {
+      const groupName = checkbox.getAttribute('name');
+      const value = checkbox.value;
+      if (!selectedFilters[groupName]) {
+        selectedFilters[groupName] = [];
+      }
+      selectedFilters[groupName].push(value);
+    }
+  });
+  return selectedFilters;
+}
+
+const priceRangeInput = document.querySelector('#price-range');
+const priceChart = document.querySelector('#price-chart');
+const showChartCheckbox = document.querySelector('#show-chart');
+
+priceRangeInput.addEventListener('input', () => {
+  const value = priceRangeInput.value;
+  const percentage = ((value - priceRangeInput.min) / (priceRangeInput.max - priceRangeInput.min)) * 100;
+  priceRangeInput.style.background = `linear-gradient(to right, red 0%, red ${percentage}%, #f5f5f5 ${percentage}%, #f5f5f5 100%)`;
+});
+
+showChartCheckbox.addEventListener('change', () => {
+  if (showChartCheckbox.checked) {
+    priceChart.style.display = 'block';
+  } else {
+    priceChart.style.display = 'none';
+  }
+});
+
 }
 
 	}
