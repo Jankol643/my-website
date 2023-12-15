@@ -139,45 +139,6 @@
 		})
 	});
 
-		let priceInputMax = document.getElementsByClassName('price-max')[0],
-		priceInputMin = document.getElementsByClassName('price-min')[0];
-
-priceInputMax.addEventListener('change', function(){
-	updatePriceSlider($(this).parent() , this.value)
-});
-
-priceInputMin.addEventListener('change', function(){
-	updatePriceSlider($(this).parent() , this.value)
-});
-
-function updatePriceSlider(elem , value) {
-	if ( elem.hasClass('price-min') ) {
-		console.log('min')
-		priceSlider.noUiSlider.set([value, null]);
-	} else if ( elem.hasClass('price-max')) {
-		console.log('max')
-		priceSlider.noUiSlider.set([null, value]);
-	}
-}
-
-// Price Slider
-let priceSlider = document.getElementsByClassName('price-slider');
-if (!priceSlider) {
-	noUiSlider.create(priceSlider, {
-		start: [1, 999],
-		connect: true,
-		step: 1,
-		range: {
-			'min': 1,
-			'max': 999
-		}
-	});
-
-	priceSlider.noUiSlider.on('update', function( values, handle ) {
-		let value = values[handle];
-		handle ? priceInputMax.value = value : priceInputMin.value = value
-	});
-
 	const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener('change', () => {
@@ -222,8 +183,6 @@ showChartCheckbox.addEventListener('change', () => {
 
 }
 
-	}
-
 	function initPriceFilter() {
 		let minValue = document.getElementById("min-value");
 let maxValue = document.getElementById("max-value");
@@ -244,11 +203,12 @@ function validateRange() {
   const minPercentage = ((minPrice - 10) / 490) * 100;
   const maxPercentage = ((maxPrice - 10) / 490) * 100;
 
-  rangeFill.style.left = minPercentage + "%";
-  rangeFill.style.width = maxPercentage - minPercentage + "%";
+  let priceFilterSlider = document.getElementById('range');
+  if (priceFilterSlider) {
+	priceFilterSlider.style.left = minPercentage + "%";
+	priceFilterSlider.style.width = maxPercentage - minPercentage + "%";
+  }
 
-  minValue.innerHTML = "$" + minPrice;
-  maxValue.innerHTML = "$" + maxPrice;
 }
 
 const inputElements = document.querySelectorAll("input");
