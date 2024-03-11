@@ -1,0 +1,12 @@
+my website:
+14.12.2023;18:40;19:40;added wishlist function
+15.12.2023;07:48;09:01;added filters
+15.12.2023;09:01;09:20;bug fixes
+15.12.2023;10:05;10:59;portfolio website
+15.12.2023;17:04;18:53;created favicons and other icons,updated readme
+02.01.2024;14:10;14:30;template search
+07.01.2024;17:46;18:26;adaptations
+07.01.2024;18:26;18:53;technology research (Frontend vue.js, Backend: NodeJS, CMS: Drupal, Database: Mysql, Postgresql)
+07.01.2024;19:08;20:34;adaptations
+11.01.2024;17:35;17:44;reformatting
+11.01.2024;19:20;21:00;adaptations
